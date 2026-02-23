@@ -1,25 +1,25 @@
-public class PalimdromeCheckerApp {
-    private static final String APP_NAME = "Palindrome Checker App";
-    private static final String VERSION = "Version 1.0";
-    private static final String AUTHOR = "Your Name";
+/*
+ * UC1: Application Entry & Welcome Message
+ * Palindrome Checker Application
+ */
 
-    /**
-     * Main Method - Entry point of the application
-     * JVM starts execution from here
-     */
+public class PalindromeCheckerApp {
+
+    // Application constants
+    static final String APP_NAME = "Palindrome Checker Application";
+    static final String APP_VERSION = "Version 1.0";
+
+    // Main method - Entry point of the program
     public static void main(String[] args) {
 
-        System.out.println("======================================");
-        System.out.println("        " + APP_NAME);
-        System.out.println("        " + VERSION);
-        System.out.println("======================================");
-        System.out.println("Author  : " + AUTHOR);
-        System.out.println("Status  : Application Started");
-        System.out.println("======================================");
-        System.out.println("Welcome to the Palindrome Checker App!");
-        System.out.println("======================================");
+        // Display welcome message
+        System.out.println("========================================");
+        System.out.println("Welcome to the Palindrome Checker Management System");
+        System.out.println(APP_VERSION);
+        System.out.println("========================================");
 
-        // Program ends after displaying welcome message
-        System.out.println("Application execution completed.");
+        // Application startup complete
+        System.out.println("System initialized successfully");
+
     }
 }
