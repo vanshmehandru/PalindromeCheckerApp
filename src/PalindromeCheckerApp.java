@@ -1,25 +1,34 @@
 /*
- * UC1: Application Entry & Welcome Message
- * Palindrome Checker Application
+ * UC2: Check User Input and Print Yes/No
  */
+
+import java.util.Scanner;
 
 public class PalindromeCheckerApp {
 
-    // Application constants
-    static final String APP_NAME = "Palindrome Checker Application";
-    static final String APP_VERSION = "Version 1.0";
-
-    // Main method - Entry point of the program
     public static void main(String[] args) {
 
-        // Display welcome message
-        System.out.println("========================================");
-        System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println(APP_VERSION);
-        System.out.println("========================================");
+        // Create Scanner object to take user input
+        Scanner scanner = new Scanner(System.in);
 
-        // Application startup complete
-        System.out.println("System initialized successfully");
+        // Ask user for input
+        System.out.print("Enter text: ");
+        String input = scanner.nextLine();
 
+        // Reverse the string
+        String reversed = "";
+
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed += input.charAt(i);
+        }
+
+        // Check palindrome
+        if (input.equals(reversed)) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+
+        scanner.close();
     }
 }
