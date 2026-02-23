@@ -28,8 +28,6 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println("\"" + input + "\" is NOT a Palindrome.");
         }
-
-        // Close the scanner
         scanner.close();
     }
 }
