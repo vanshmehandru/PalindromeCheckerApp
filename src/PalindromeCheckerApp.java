@@ -41,7 +41,7 @@ public class PalindromeCheckerApp {
             }
         }
 
-        // Display result
+        // Display
         if (isPalindrome) {
             System.out.println("\"" + input + "\" is a Palindrome.");
         } else {
