@@ -1,5 +1,6 @@
 /*
- * UC2: Check User Input and Print Yes/No
+ * UC4: Character Array Based Palindrome Check
+ * Goal: Check whether a string is a palindrome using a char array and two-pointer approach
  */
 
 import java.util.Scanner;
@@ -8,25 +9,34 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Create Scanner object to take user input
         Scanner scanner = new Scanner(System.in);
 
         // Ask user for input
-        System.out.print("Enter text: ");
+        System.out.print("Enter text to check for palindrome: ");
         String input = scanner.nextLine();
 
-        // Reverse the string
-        String reversed = "";
+        // Convert string to character array
+        char[] chars = input.toCharArray();
 
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed += input.charAt(i);
+        // Two-pointer technique
+        boolean isPalindrome = true;
+        int start = 0;
+        int end = chars.length - 1;
+
+        while (start < end) {
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        // Check palindrome
-        if (input.equals(reversed)) {
-            System.out.println("Yes");
+        // Display result
+        if (isPalindrome) {
+            System.out.println("\"" + input + "\" is a Palindrome.");
         } else {
-            System.out.println("No");
+            System.out.println("\"" + input + "\" is NOT a Palindrome.");
         }
 
         scanner.close();
