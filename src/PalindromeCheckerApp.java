@@ -1,9 +1,10 @@
 /*
- * UC4: Character Array Based Palindrome Check
- * Goal: Check whether a string is a palindrome using a char array and two-pointer approach
+ * UC5: Stack-Based Palindrome Checker
+ * Goal: Use a stack to reverse characters and validate palindrome
  */
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
@@ -15,25 +16,22 @@ public class PalindromeCheckerApp {
         System.out.print("Enter text to check for palindrome: ");
         String input = scanner.nextLine();
 
-        // Convert string to character array
-        char[] chars = input.toCharArray();
+        // Create a stack of characters
+        Stack<Character> stack = new Stack<>();
 
-        // Two-pointer technique
-        boolean isPalindrome = true;
-        int start = 0;
-        int end = chars.length - 1;
-
-        while (start < end) {
-            if (chars[start] != chars[end]) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
+        // Push all characters of the string into the stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
         }
 
-        // Display result
-        if (isPalindrome) {
+        // Pop characters to create reversed string
+        String reversed = "";
+        while (!stack.isEmpty()) {
+            reversed += stack.pop();
+        }
+
+        // Compare original and reversed strings
+        if (input.equals(reversed)) {
             System.out.println("\"" + input + "\" is a Palindrome.");
         } else {
             System.out.println("\"" + input + "\" is NOT a Palindrome.");
