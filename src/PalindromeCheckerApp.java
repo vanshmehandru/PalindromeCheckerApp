@@ -1,25 +1,35 @@
-public class PalimdromeCheckerApp {
-    private static final String APP_NAME = "Palindrome Checker App";
-    private static final String VERSION = "Version 1.0";
-    private static final String AUTHOR = "Your Name";
+/*
+ * UC3: Palindrome Check Using String Reverse
+ * Goal: Check whether a string is a palindrome by reversing it.
+ */
 
-    /**
-     * Main Method - Entry point of the application
-     * JVM starts execution from here
-     */
+import java.util.Scanner;
+
+public class PalindromeCheckerApp {
+
     public static void main(String[] args) {
 
-        System.out.println("======================================");
-        System.out.println("        " + APP_NAME);
-        System.out.println("        " + VERSION);
-        System.out.println("======================================");
-        System.out.println("Author  : " + AUTHOR);
-        System.out.println("Status  : Application Started");
-        System.out.println("======================================");
-        System.out.println("Welcome to the Palindrome Checker App!");
-        System.out.println("======================================");
+        // Create Scanner object to take user input
+        Scanner scanner = new Scanner(System.in);
 
-        // Program ends after displaying welcome message
-        System.out.println("Application execution completed.");
+        // Ask user for input
+        System.out.print("Enter text to check for palindrome: ");
+        String input = scanner.nextLine();
+
+        // Reverse the string using a for loop
+        String reversed = "";
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed += input.charAt(i);
+        }
+
+        // Compare original and reversed using equals()
+        if (input.equals(reversed)) {
+            System.out.println("\"" + input + "\" is a Palindrome.");
+        } else {
+            System.out.println("\"" + input + "\" is NOT a Palindrome.");
+        }
+
+        // Close the scanner
+        scanner.close();
     }
 }
