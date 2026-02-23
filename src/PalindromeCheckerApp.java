@@ -1,51 +1,36 @@
-/*
- * UC6: Queue + Stack Based Palindrome Check
- * Goal: Demonstrate FIFO vs LIFO using Queue and Stack
- */
+package Palindrome;
 
-import java.util.Scanner;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
-public class PalindromeCheckerApp {
+public class PalindromeChecker {
 
     public static void main(String[] args) {
 
+        System.out.println("Welcome to Palindrome Checker App");
+
         Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a word: ");
+        String word = scanner.nextLine();
 
-        // Ask user for input
-        System.out.print("Enter text to check for palindrome: ");
-        String input = scanner.nextLine();
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // Create Queue (FIFO) and Stack (LIFO)
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
-
-        // Enqueue and push all characters
-        for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
-            queue.add(c);   // enqueue
-            stack.push(c);  // push
+        for (char c : word.toCharArray()) {
+            deque.add(c);
         }
 
-        // Compare dequeue vs pop
         boolean isPalindrome = true;
-        while (!queue.isEmpty() && !stack.isEmpty()) {
-            char fromQueue = queue.remove();  // dequeue
-            char fromStack = stack.pop();     // pop
 
-            if (fromQueue != fromStack) {
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast())) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        // Display result
         if (isPalindrome) {
-            System.out.println("\"" + input + "\" is a Palindrome.");
+            System.out.println("Palindrome");
         } else {
-            System.out.println("\"" + input + "\" is NOT a Palindrome.");
+            System.out.println("Not Palindrome");
         }
 
         scanner.close();
