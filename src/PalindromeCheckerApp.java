@@ -1,33 +1,60 @@
-public class UseCase10PalindromeCheckerApp {
+import java.util.Scanner;
+import java.util.Stack;
 
-    static class Recursion {
+// Service class responsible only for palindrome logic
+class PalindromeChecker {
 
-        public static boolean Palindrome(String s, int start, int end) {
+    // Public method to check palindrome
+    public boolean checkPalindrome(String input) {
 
-
-            if (start >= end)
-                return true;
-
-
-            if (s.charAt(start) != s.charAt(end))
-                return false;
-
-
-            return Palindrome(s, start + 1, end - 1);
+        if (input == null) {
+            return false;
         }
+
+        // Normalize string (remove spaces, ignore case)
+        String cleaned = input.replaceAll("\\s+", "").toLowerCase();
+
+        Stack<Character> stack = new Stack<>();
+
+        // Push all characters onto stack
+        for (int i = 0; i < cleaned.length(); i++) {
+            stack.push(cleaned.charAt(i));
+        }
+
+        // Compare characters while popping
+        for (int i = 0; i < cleaned.length(); i++) {
+            if (cleaned.charAt(i) != stack.pop()) {
+                return false;
+            }
+        }
+
+        return true;
     }
+}
+
+// Main Application Class
+public class UseCase11PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        String s = "A Man a Plan a Canal Panama";
-        String newString = s.toLowerCase();
-        System.out.println(newString);
-        String removedspace = newString.replace(" ","");
-        System.out.println(removedspace);
+        Scanner scanner = new Scanner(System.in);
 
-        if (Recursion.Palindrome(removedspace, 0, removedspace.length() - 1))
-            System.out.println("Palindrome");
-        else
-            System.out.println("Not palindrome");
+        System.out.println("=== Palindrome Checker App (UC11) ===");
+        System.out.print("Enter a string: ");
+
+        String input = scanner.nextLine();
+
+        // Encapsulated service object
+        PalindromeChecker checker = new PalindromeChecker();
+
+        boolean result = checker.checkPalindrome(input);
+
+        if (result) {
+            System.out.println("Result: The given string is a Palindrome.");
+        } else {
+            System.out.println("Result: The given string is NOT a Palindrome.");
+        }
+
+        scanner.close();
     }
 }
