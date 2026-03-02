@@ -76,9 +76,8 @@ public class UseCase13PalindromeCheckerApp {
         System.out.println("Stack Method Result:   " + result2 +
                 " | Time: " + (end2 - start2) + " ns");
 
-        System.out.println("Deque Method Result:   " + result3 +
+        System.out.println("Deque Method Result :   " + result3 +
                 " | Time: " + (end3 - start3) + " ns");
-
         scanner.close();
     }
 }
