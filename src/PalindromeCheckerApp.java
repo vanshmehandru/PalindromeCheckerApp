@@ -1,35 +1,29 @@
-import java.util.*;
+public class UseCase9PalindromeCheckerApp {
 
-public class UseCase8PalindromeCheckerApp {
+    static class Recursion {
+
+        public static boolean Palindrome(String s, int start, int end) {
+
+
+            if (start >= end)
+                return true;
+
+
+            if (s.charAt(start) != s.charAt(end))
+                return false;
+
+
+            return Palindrome(s, start + 1, end - 1);
+        }
+    }
 
     public static void main(String[] args) {
-        boolean IsPalindrome = true;
+
         String s = "bob";
 
-        LinkedList<Character> list = new LinkedList<>();
-        for(char ch: s.toCharArray()){
-            list.addFirst(ch);
-        }
-        char[] arr = s.toCharArray();
-        int end=s.length()-1;
-        while(list.size()>1){
-
-            if(arr[end]!=list.removeLast()){
-                IsPalindrome = false;
-            }
-
-            end--;
-
-
-
-        }
-
-
-        if(IsPalindrome){
+        if (Recursion.Palindrome(s, 0, s.length() - 1))
             System.out.println("Palindrome");
-        }
-        else{
+        else
             System.out.println("Not palindrome");
-        }
     }
 }
