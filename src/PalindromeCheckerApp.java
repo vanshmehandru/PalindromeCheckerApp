@@ -1,33 +1,35 @@
-/*
- * UC3: Palindrome Check Using String Reverse
- * Goal: Check whether a string is a palindrome by reversing it.
- */
+import java.util.*;
 
-import java.util.Scanner;
-
-public class PalindromeCheckerApp {
+public class UseCase8PalindromeCheckerApp {
 
     public static void main(String[] args) {
+        boolean IsPalindrome = true;
+        String s = "bob";
 
-        // Create Scanner object to take user input
-        Scanner scanner = new Scanner(System.in);
+        LinkedList<Character> list = new LinkedList<>();
+        for(char ch: s.toCharArray()){
+            list.addFirst(ch);
+        }
+        char[] arr = s.toCharArray();
+        int end=s.length()-1;
+        while(list.size()>1){
 
-        // Ask user for input
-        System.out.print("Enter text to check for palindrome: ");
-        String input = scanner.nextLine();
+            if(arr[end]!=list.removeLast()){
+                IsPalindrome = false;
+            }
 
-        // Reverse the string using a for loop
-        String reversed = "";
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed += input.charAt(i);
+            end--;
+
+
+
         }
 
-        // Compare original and reversed using equals()
-        if (input.equals(reversed)) {
-            System.out.println("\"" + input + "\" is a Palindrome.");
-        } else {
-            System.out.println("\"" + input + "\" is NOT a Palindrome.");
+
+        if(IsPalindrome){
+            System.out.println("Palindrome");
         }
-        scanner.close();
+        else{
+            System.out.println("Not palindrome");
+        }
     }
 }
